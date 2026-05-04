@@ -1,3 +1,3 @@
 Paste your public GitHub repository link here:
 
-https://github.com/your-username/your-repository-name
+https://github.com/tanyadimalgi922/IT3040-Transliteration-Testing/tree/main/IT3040_Python_Playwright_Project/test_automation

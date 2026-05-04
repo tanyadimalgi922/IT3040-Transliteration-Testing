@@ -54,26 +54,33 @@ def compare_text(actual: str, expected: str) -> str:
 
 def find_header_columns(ws) -> dict:
     """Find required Excel headers and return a header-name to column-number map."""
-    required = {
-        "TC ID": None,
-        "Input length type": None,
-        "Input": None,
-        "Expected output": None,
-        "Actual output": None,
-        "Status": None,
+    header_aliases = {
+        "TC ID": ["TC ID", "Test Case ID"],
+        "Input length type": ["Input length type"],
+        "Input": ["Input"],
+        "Expected output": ["Expected output"],
+        "Actual output": ["Actual output"],
+        "Status": ["Status"],
+    }
+    required = {name: None for name in header_aliases}
+    alias_to_required = {
+        alias.strip().lower(): name
+        for name, aliases in header_aliases.items()
+        for alias in aliases
     }
 
     for cell in ws[1]:
         value = str(cell.value).strip() if cell.value is not None else ""
-        if value in required:
-            required[value] = cell.column
+        required_name = alias_to_required.get(value.lower())
+        if required_name:
+            required[required_name] = cell.column
 
     missing = [name for name, col in required.items() if col is None]
     if missing:
         raise ValueError(
             "Missing required Excel columns: "
             + ", ".join(missing)
-            + "\nRequired columns: TC ID, Input length type, Input, Expected output, Actual output, Status"
+            + "\nRequired columns: TC ID/Test Case ID, Input length type, Input, Expected output, Actual output, Status"
         )
 
     return required
@@ -121,6 +128,19 @@ def choose_input_locator(page):
     Select the input area.
     The website UI may change, so this function tries common textbox patterns.
     """
+    preferred = [
+        "textarea[placeholder*='English']",
+        "textarea[placeholder*='Type']",
+        "textarea",
+    ]
+    for selector in preferred:
+        try:
+            item = page.locator(selector).first
+            if item.count() > 0 and item.is_visible(timeout=500) and item.is_enabled(timeout=500):
+                return item
+        except Exception:
+            pass
+
     candidates = [
         "textarea",
         "input[type='text']",
@@ -153,6 +173,76 @@ def choose_input_locator(page):
     return visible[0][3]
 
 
+def click_transliterate_button(page) -> None:
+    """Click the page action button that generates the Sinhala output."""
+    button_names = ["Transliterate", "Translate", "Convert", "Generate"]
+    for name in button_names:
+        try:
+            button = page.get_by_role("button", name=name, exact=True).first
+            if button.count() > 0 and button.is_visible(timeout=700) and button.is_enabled(timeout=700):
+                button.click(timeout=3000)
+                return
+        except Exception:
+            pass
+
+    for name in button_names:
+        try:
+            button = page.get_by_text(name, exact=False).first
+            if button.count() > 0 and button.is_visible(timeout=700):
+                button.click(timeout=3000)
+                return
+        except Exception:
+            pass
+
+
+def click_clear_button(page) -> None:
+    """Use the page's Clear button so the app resets its own input/output state."""
+    try:
+        buttons = page.locator("button")
+        for i in range(buttons.count()):
+            button = buttons.nth(i)
+            if button.is_visible(timeout=300) and "Clear" in button.inner_text(timeout=300):
+                button.click(timeout=3000)
+                page.wait_for_function(
+                    """() => Array.from(document.querySelectorAll('textarea'))
+                        .every(box => !box.value || box.value.trim().length === 0)""",
+                    timeout=5000
+                )
+                return
+    except Exception:
+        pass
+
+    try:
+        button = page.get_by_text("Clear", exact=False).first
+        if button.count() > 0 and button.is_visible(timeout=700):
+            button.click(timeout=3000)
+            page.wait_for_function(
+                """() => Array.from(document.querySelectorAll('textarea'))
+                    .every(box => !box.value || box.value.trim().length === 0)""",
+                timeout=5000
+            )
+    except Exception:
+        pass
+
+
+def clear_output_box(page) -> None:
+    """Clear any previous generated output before running the next test case."""
+    try:
+        page.evaluate(
+            """() => {
+                const boxes = Array.from(document.querySelectorAll('textarea'));
+                const output = boxes.find(box => /Sinhala|appear/i.test(box.getAttribute('placeholder') || '')) || boxes[1];
+                if (output) {
+                    output.value = '';
+                    output.dispatchEvent(new Event('input', { bubbles: true }));
+                    output.dispatchEvent(new Event('change', { bubbles: true }));
+                }
+            }"""
+        )
+    except Exception:
+        pass
+
+
 def get_value_or_text(locator) -> str:
     """Read value from input/textarea or inner text from other elements."""
     try:
@@ -172,6 +262,30 @@ def capture_output(page, input_text: str, expected_text: str) -> str:
     Capture the Sinhala output from the page.
     It first checks textareas/inputs, then visible Sinhala text blocks.
     """
+    # PixelsSuite currently uses the second textarea as the Sinhala output box.
+    output_selectors = [
+        "textarea[placeholder*='Sinhala']",
+        "textarea[placeholder*='appear']",
+    ]
+    for selector in output_selectors:
+        try:
+            item = page.locator(selector).first
+            if item.count() > 0 and item.is_visible(timeout=500):
+                txt = get_value_or_text(item)
+                if txt:
+                    return txt
+        except Exception:
+            pass
+
+    try:
+        textareas = page.locator("textarea")
+        if textareas.count() >= 2 and textareas.nth(1).is_visible(timeout=500):
+            txt = get_value_or_text(textareas.nth(1))
+            if txt:
+                return txt
+    except Exception:
+        pass
+
     # 1) Common case: two textareas/input boxes. First is input, second is output.
     controls = []
     for selector in ["textarea", "input[type='text']", "[contenteditable='true']", "[role='textbox']"]:
@@ -225,17 +339,12 @@ def capture_output(page, input_text: str, expected_text: str) -> str:
 
 def run_one_test(page, input_text: str, expected_text: str, type_delay_ms: int, wait_ms: int) -> str:
     """Enter one test input and return captured actual output."""
+    click_clear_button(page)
     input_box = choose_input_locator(page)
 
     try:
         input_box.click(timeout=5000)
-        # Clear existing text robustly
-        try:
-            input_box.fill("", timeout=3000)
-        except Exception:
-            page.keyboard.press("Control+A")
-            page.keyboard.press("Backspace")
-
+        input_box.fill("", timeout=3000)
         input_box.type(str(input_text), delay=type_delay_ms)
     except Exception:
         # Fallback keyboard typing
@@ -244,7 +353,46 @@ def run_one_test(page, input_text: str, expected_text: str, type_delay_ms: int, 
         page.keyboard.press("Backspace")
         page.keyboard.type(str(input_text), delay=type_delay_ms)
 
-    page.wait_for_timeout(wait_ms)
+    try:
+        current_input = clean_text(input_box.input_value(timeout=1000))
+        if current_input != clean_text(input_text):
+            input_box.click(timeout=5000)
+            page.keyboard.press("Control+A")
+            page.keyboard.press("Backspace")
+            page.keyboard.type(str(input_text), delay=type_delay_ms)
+    except Exception:
+        pass
+
+    page.wait_for_timeout(1000)
+    previous_output = ""
+    try:
+        previous_output = page.evaluate(
+            """() => {
+                const boxes = Array.from(document.querySelectorAll('textarea'));
+                const output = boxes.find(box => /Sinhala|appear/i.test(box.getAttribute('placeholder') || '')) || boxes[1];
+                return output && output.value ? output.value.trim() : '';
+            }"""
+        )
+    except Exception:
+        pass
+
+    click_transliterate_button(page)
+    try:
+        page.wait_for_function(
+            """previous => {
+                const boxes = Array.from(document.querySelectorAll('textarea'));
+                const output = boxes.find(box => /Sinhala|appear/i.test(box.getAttribute('placeholder') || '')) || boxes[1];
+                const value = output && output.value ? output.value.trim() : '';
+                return value.length > 0 && value !== previous;
+            }""",
+            arg=previous_output,
+            timeout=max(wait_ms, 45000)
+        )
+    except PlaywrightTimeoutError:
+        actual = capture_output(page, input_text, expected_text)
+        if actual:
+            return actual
+        raise RuntimeError("Actual output was not generated within the wait time.")
     return capture_output(page, input_text, expected_text)
 
 
