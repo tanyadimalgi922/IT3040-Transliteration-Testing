@@ -1,0 +1,402 @@
+[
+  {
+    "tcId": "Neg_0001",
+    "inputLengthType": "S",
+    "input": "oyata mage msg eka penawada?",
+    "expectedOutput": "ඔයාට මගේ msg එක පෙනවද?",
+    "inputTypesCovered": "Question forms",
+    "evidence": "Rationale: The sentence asks whether the message is visible."
+  },
+  {
+    "tcId": "Neg_0002",
+    "inputLengthType": "M",
+    "input": "oyata puluwanda me QR eka scan karanna?",
+    "expectedOutput": "ඔයාට පුළුවන්ද මේ QR එක scan කරන්න?",
+    "inputTypesCovered": "Question forms",
+    "evidence": "Rationale: The input is a question using 'puluwanda' and a question mark."
+  },
+  {
+    "tcId": "Neg_0003",
+    "inputLengthType": "M",
+    "input": "Amma kiwa, PDF eka ewanna kiyala.",
+    "expectedOutput": "අම්මා කිව්වා, PDF එක එවන්න කියලා.",
+    "inputTypesCovered": "Command forms",
+    "evidence": "Evidence: The phrase reports a command to send the PDF."
+  },
+  {
+    "tcId": "Neg_0004",
+    "inputLengthType": "M",
+    "input": "Nangi, payment receipt eka WhatsApp eken danna.",
+    "expectedOutput": "නංගි, payment receipt එක WhatsApp එකෙන් දාන්න.",
+    "inputTypesCovered": "Command forms",
+    "evidence": "Evidence: The phrase asks someone to send the payment receipt."
+  },
+  {
+    "tcId": "Neg_0005",
+    "inputLengthType": "S",
+    "input": "Suba sandewak wewa!",
+    "expectedOutput": "සුබ සැඳෑවක් වේවා!",
+    "inputTypesCovered": "Greetings",
+    "evidence": "Rationale: The phrase is a greeting/wish for the evening."
+  },
+  {
+    "tcId": "Neg_0006",
+    "inputLengthType": "S",
+    "input": "Obata nirogi suwaya pathanawa!",
+    "expectedOutput": "ඔබට නිරෝගී සුවය පතනවා!",
+    "inputTypesCovered": "Greetings",
+    "evidence": "Rationale: The input is a greeting/wish."
+  },
+  {
+    "tcId": "Neg_0007",
+    "inputLengthType": "M",
+    "input": "puluwannam me backup file eka resend karanna.",
+    "expectedOutput": "පුළුවන්නම් මේ backup file එක resend කරන්න.",
+    "inputTypesCovered": "Requests",
+    "evidence": "Evidence: 'puluwannam ... karanna' is a polite request."
+  },
+  {
+    "tcId": "Neg_0008",
+    "inputLengthType": "M",
+    "input": "oyata puluwannam mata link eka ewanna.",
+    "expectedOutput": "ඔයාට පුළුවන්නම් මට link එක එවන්න.",
+    "inputTypesCovered": "Requests",
+    "evidence": "Evidence: 'puluwannam ... ewanna' is a polite request."
+  },
+  {
+    "tcId": "Neg_0009",
+    "inputLengthType": "S",
+    "input": "hari, mama passe balannam.",
+    "expectedOutput": "හරි, මම පස්සේ බලන්නම්.",
+    "inputTypesCovered": "Responses",
+    "evidence": "Rationale: The input is a reply agreeing to check later."
+  },
+  {
+    "tcId": "Neg_0010",
+    "inputLengthType": "M",
+    "input": "ow, eka upload wela thiyenne wage.",
+    "expectedOutput": "ඔව්, එක upload වෙලා තියෙන්නේ වගේ.",
+    "inputTypesCovered": "Responses",
+    "evidence": "Rationale: The input confirms that something appears uploaded."
+  },
+  {
+    "tcId": "Neg_0011",
+    "inputLengthType": "S",
+    "input": "passe passe enna epa.",
+    "expectedOutput": "පස්සේ පස්සේ එන්න එපා.",
+    "inputTypesCovered": "Repeated Words",
+    "evidence": "Evidence: The word 'passe' is repeated."
+  },
+  {
+    "tcId": "Neg_0012",
+    "inputLengthType": "S",
+    "input": "hema hema dawasama enna.",
+    "expectedOutput": "හැම හැම දවසම එන්න.",
+    "inputTypesCovered": "Repeated Words",
+    "evidence": "Evidence: The word 'hema' is repeated."
+  },
+  {
+    "tcId": "Neg_0013",
+    "inputLengthType": "S",
+    "input": "ane... mata amathaka una!",
+    "expectedOutput": "අනේ... මට අමතක වුණා!",
+    "inputTypesCovered": "Inputs with Punctuation Marks",
+    "evidence": "Rationale: It includes ellipsis and exclamation mark."
+  },
+  {
+    "tcId": "Neg_0014",
+    "inputLengthType": "S",
+    "input": "aiyo!!! mata amathaka una??",
+    "expectedOutput": "අයියෝ!!! මට අමතක වුණා??",
+    "inputTypesCovered": "Inputs with Punctuation Marks",
+    "evidence": "Rationale: It includes a question mark and exclamation mark."
+  },
+  {
+    "tcId": "Neg_0015",
+    "inputLengthType": "S",
+    "input": "mn oyage gedarata passe ennam.",
+    "expectedOutput": "මං ඔයාගේ ගෙදරට පස්සේ එන්නම්.",
+    "inputTypesCovered": "Romanization / Spelling Variants",
+    "evidence": "Rationale: 'mn' is a shortened spelling variant of 'man/mama'."
+  },
+  {
+    "tcId": "Neg_0016",
+    "inputLengthType": "M",
+    "input": "oyt meka therunada kiyala blnna.",
+    "expectedOutput": "ඔයාට මේක තේරුණාද කියලා බලන්න.",
+    "inputTypesCovered": "Romanization / Spelling Variants",
+    "evidence": "Rationale: 'oyt' and 'blnna' are chat-style spelling variants."
+  },
+  {
+    "tcId": "Neg_0017",
+    "inputLengthType": "S",
+    "input": "mama copies print karanawa.",
+    "expectedOutput": "මම copies print කරනවා.",
+    "inputTypesCovered": "Isolated English Word Insertions in Singlish",
+    "evidence": "Evidence: Single English words 'copies' and 'print' are inserted."
+  },
+  {
+    "tcId": "Neg_0018",
+    "inputLengthType": "S",
+    "input": "api copies scan karamu.",
+    "expectedOutput": "අපි copies scan කරමු.",
+    "inputTypesCovered": "Isolated English Word Insertions in Singlish",
+    "evidence": "Evidence: Single English words 'copies' and 'scan' appear in Singlish."
+  },
+  {
+    "tcId": "Neg_0019",
+    "inputLengthType": "M",
+    "input": "mama dan not available nisa please call later.",
+    "expectedOutput": "මම දැන් not available නිසා please call later.",
+    "inputTypesCovered": "Multi-Word English Phrases in Singlish",
+    "evidence": "Evidence: 'not available' and 'please call later' are multi-word English phrases."
+  },
+  {
+    "tcId": "Neg_0020",
+    "inputLengthType": "M",
+    "input": "api dan not available nisa please call later.",
+    "expectedOutput": "අපි දැන් not available නිසා please call later.",
+    "inputTypesCovered": "Multi-Word English Phrases in Singlish",
+    "evidence": "Evidence: 'not available' and 'please call later' are multi-word English phrases."
+  },
+  {
+    "tcId": "Neg_0021",
+    "inputLengthType": "M",
+    "input": "mage login OTP eka expire wela.",
+    "expectedOutput": "මගේ login OTP එක expire වෙලා.",
+    "inputTypesCovered": "English Digital Terms in Singlish",
+    "evidence": "Evidence: The input contains digital terms 'login', 'OTP', and 'expire'."
+  },
+  {
+    "tcId": "Neg_0022",
+    "inputLengthType": "S",
+    "input": "me QR eka scan karanna.",
+    "expectedOutput": "මේ QR එක scan කරන්න.",
+    "inputTypesCovered": "English Digital Terms in Singlish",
+    "evidence": "Evidence: The input contains digital terms 'QR' and 'scan'."
+  },
+  {
+    "tcId": "Neg_0023",
+    "inputLengthType": "M",
+    "input": "mata WhatsApp eken receipt danna.",
+    "expectedOutput": "මට WhatsApp එකෙන් receipt දාන්න.",
+    "inputTypesCovered": "Platform/App Names in Singlish",
+    "evidence": "Evidence: 'WhatsApp' is a platform name embedded in Singlish."
+  },
+  {
+    "tcId": "Neg_0024",
+    "inputLengthType": "M",
+    "input": "WhatsApp eken group link eka danna.",
+    "expectedOutput": "WhatsApp එකෙන් group link එක දාන්න.",
+    "inputTypesCovered": "Platform/App Names in Singlish",
+    "evidence": "Evidence: 'WhatsApp' is an app/platform name in the input."
+  },
+  {
+    "tcId": "Neg_0025",
+    "inputLengthType": "M",
+    "input": "sir kiwa CV eka PDF widihata ewanna.",
+    "expectedOutput": "sir කිව්වා CV එක PDF විදිහට එවන්න.",
+    "inputTypesCovered": "English Abbreviations/Acronyms in Singlish",
+    "evidence": "Evidence: 'CV' and 'PDF' are English acronyms/abbreviations."
+  },
+  {
+    "tcId": "Neg_0026",
+    "inputLengthType": "S",
+    "input": "mage OTP eka thama awe na.",
+    "expectedOutput": "මගේ OTP එක තාම ආවේ නෑ.",
+    "inputTypesCovered": "English Abbreviations/Acronyms in Singlish",
+    "evidence": "Evidence: 'OTP' is an English abbreviation used in the sentence."
+  },
+  {
+    "tcId": "Neg_0027",
+    "inputLengthType": "S",
+    "input": "mama uni ID eka ganna yanawa.",
+    "expectedOutput": "මම uni ID එක ගන්න යනවා.",
+    "inputTypesCovered": "English Clipped Forms in Singlish",
+    "evidence": "Evidence: 'uni' is a clipped English form."
+  },
+  {
+    "tcId": "Neg_0028",
+    "inputLengthType": "M",
+    "input": "mama uni eken passe bus ekata yanawa.",
+    "expectedOutput": "මම uni එකෙන් පස්සේ bus එකට යනවා.",
+    "inputTypesCovered": "English Clipped Forms in Singlish",
+    "evidence": "Evidence: 'uni' is a clipped form of university."
+  },
+  {
+    "tcId": "Neg_0029",
+    "inputLengthType": "M",
+    "input": "api heta Nugegoda handiyata yanawa.",
+    "expectedOutput": "අපි හෙට Nugegoda හන්දියට යනවා.",
+    "inputTypesCovered": "Place Names Embedded in Singlish",
+    "evidence": "Evidence: 'Nugegoda' is a place name embedded in Singlish."
+  },
+  {
+    "tcId": "Neg_0030",
+    "inputLengthType": "M",
+    "input": "mama Borella handiyen bus ekata naginnam.",
+    "expectedOutput": "මම Borella හන්දියෙන් bus එකට නගින්නම්.",
+    "inputTypesCovered": "Place Names Embedded in Singlish",
+    "evidence": "Evidence: 'Borella' is a place name embedded in the input."
+  },
+  {
+    "tcId": "Neg_0031",
+    "inputLengthType": "S",
+    "input": "Nimal ayya ada office awe na.",
+    "expectedOutput": "Nimal අයියා අද office ආවේ නෑ.",
+    "inputTypesCovered": "Person Names Embedded in Singlish",
+    "evidence": "Evidence: 'Nimal' is a person name inside the Singlish input."
+  },
+  {
+    "tcId": "Neg_0032",
+    "inputLengthType": "M",
+    "input": "Sachini teacher assignment eka baluwa.",
+    "expectedOutput": "Sachini teacher assignment එක බැලුවා.",
+    "inputTypesCovered": "Person Names Embedded in Singlish",
+    "evidence": "Evidence: 'Sachini' is a person name embedded in the sentence."
+  },
+  {
+    "tcId": "Neg_0033",
+    "inputLengthType": "M",
+    "input": "mata copies 5k print karala denna.",
+    "expectedOutput": "මට copies 5ක් print කරලා දෙන්න.",
+    "inputTypesCovered": "Inputs with Numbers and Numeric Suffixes",
+    "evidence": "Evidence: '5k' contains a number with Sinhala numeric suffix."
+  },
+  {
+    "tcId": "Neg_0034",
+    "inputLengthType": "M",
+    "input": "mata copies 4k print karala denna.",
+    "expectedOutput": "මට copies 4ක් print කරලා දෙන්න.",
+    "inputTypesCovered": "Inputs with Numbers and Numeric Suffixes",
+    "evidence": "Evidence: '4k' combines a number and Sinhala suffix."
+  },
+  {
+    "tcId": "Neg_0035",
+    "inputLengthType": "M",
+    "input": "mata LKR 3000 receipt eka WhatsApp eken danna.",
+    "expectedOutput": "මට LKR 3000 receipt එක WhatsApp එකෙන් දාන්න.",
+    "inputTypesCovered": "Inputs with Currency",
+    "evidence": "Evidence: The input includes currency value 'LKR 3000'."
+  },
+  {
+    "tcId": "Neg_0036",
+    "inputLengthType": "M",
+    "input": "USD 20 refund eka WhatsApp eken danna.",
+    "expectedOutput": "USD 20 refund එක WhatsApp එකෙන් දාන්න.",
+    "inputTypesCovered": "Inputs with Currency",
+    "evidence": "Evidence: The input includes currency 'USD 20'."
+  },
+  {
+    "tcId": "Neg_0037",
+    "inputLengthType": "S",
+    "input": "bus eka 7:30AM enawa.",
+    "expectedOutput": "bus එක 7:30AM එනවා.",
+    "inputTypesCovered": "Inputs with Time Formats",
+    "evidence": "Evidence: '8.45am' is a time format."
+  },
+  {
+    "tcId": "Neg_0038",
+    "inputLengthType": "S",
+    "input": "train eka 6:15AM enawa.",
+    "expectedOutput": "train එක 6:15AM එනවා.",
+    "inputTypesCovered": "Inputs with Time Formats",
+    "evidence": "Evidence: '6:15AM' is a time format."
+  },
+  {
+    "tcId": "Neg_0039",
+    "inputLengthType": "M",
+    "input": "meeting eka Apr 06 wenakan schedule karanna.",
+    "expectedOutput": "meeting එක Apr 06 වෙනකන් schedule කරන්න.",
+    "inputTypesCovered": "Inputs with Dates",
+    "evidence": "Evidence: The input includes date expression 'Apr 05ta'."
+  },
+  {
+    "tcId": "Neg_0040",
+    "inputLengthType": "M",
+    "input": "assignment eka Apr 05 wenakan extend karanna.",
+    "expectedOutput": "assignment එක Apr 05 වෙනකන් extend කරන්න.",
+    "inputTypesCovered": "Inputs with Dates",
+    "evidence": "Evidence: 'Apr 05' is a date expression."
+  },
+  {
+    "tcId": "Neg_0041",
+    "inputLengthType": "S",
+    "input": "me wire eka 2m kapanna.",
+    "expectedOutput": "මේ wire එක 2m කපන්න.",
+    "inputTypesCovered": "Inputs with Unit of Measurements",
+    "evidence": "Evidence: '2m' is a measurement value."
+  },
+  {
+    "tcId": "Neg_0042",
+    "inputLengthType": "M",
+    "input": "me wire eka 3.5m withara digai.",
+    "expectedOutput": "මේ wire එක 3.5m විතර දිගයි.",
+    "inputTypesCovered": "Inputs with Unit of Measurements",
+    "evidence": "Evidence: '3.5m' is a unit measurement value."
+  },
+  {
+    "tcId": "Neg_0043",
+    "inputLengthType": "S",
+    "input": "machan me wede patta lesi.",
+    "expectedOutput": "මචන් මේ වැඩේ පට්ට ලේසි.",
+    "inputTypesCovered": "Inputs with Slang and Casual Phrasing",
+    "evidence": "Evidence: 'machan' and 'patta' are casual/slang terms."
+  },
+  {
+    "tcId": "Neg_0044",
+    "inputLengthType": "S",
+    "input": "ado uba dan sira porak wage.",
+    "expectedOutput": "අඩෝ උඹ දැන් සිරා පොරක් වගේ.",
+    "inputTypesCovered": "Inputs with Slang and Casual Phrasing",
+    "evidence": "Evidence: 'ado', 'uba', and 'sira porak' are slang/casual phrasing."
+  },
+  {
+    "tcId": "Neg_0045",
+    "inputLengthType": "M",
+    "input": "me website eka balanna: https://sliit.lk",
+    "expectedOutput": "මේ website එක බලන්න: https://sliit.lk",
+    "inputTypesCovered": "Online Indentifiers in Singlish",
+    "evidence": "Evidence: The input includes the URL 'https://sliit.lk'."
+  },
+  {
+    "tcId": "Neg_0046",
+    "inputLengthType": "M",
+    "input": "mata reply eka send karanna: akila99@test.com",
+    "expectedOutput": "මට reply එක send කරන්න: akila99@test.com",
+    "inputTypesCovered": "Online Indentifiers in Singlish",
+    "evidence": "Evidence: The input includes an email address."
+  },
+  {
+    "tcId": "Neg_0047",
+    "inputLengthType": "S",
+    "input": "mata dan upset wage 😤",
+    "expectedOutput": "මට දැන් upset වගේ 😤",
+    "inputTypesCovered": "Inputs Containing Emojis",
+    "evidence": "Evidence: The input contains an emoji with a slang expression."
+  },
+  {
+    "tcId": "Neg_0048",
+    "inputLengthType": "S",
+    "input": "mata dan tharaha yanawa 😤",
+    "expectedOutput": "මට දැන් තරහ යනවා 😤",
+    "inputTypesCovered": "Inputs Containing Emojis",
+    "evidence": "Evidence: The input contains an emoji."
+  },
+  {
+    "tcId": "Neg_0049",
+    "inputLengthType": "L",
+    "input": "machan heta 9:30AM meeting ekata kalin Google Meet link eka email karanna puluwanda? mama Kandy idan enawa nisa bus eka late unoth please inform teacher. Assignment eka March 25 wenakan submit karanna one. link eka open une nathnam backup link eka WhatsApp eken danna, nathnam mama 8:45PM passe ayeth check karannam.",
+    "expectedOutput": "මචන් හෙට 9:30AM meeting එකට කලින් Google Meet link එක email කරන්න පුළුවන්ද? මම Kandy ඉඳන් එනවා නිසා bus එක late උනොත් please inform teacher. Assignment එක March 25 වෙනකන් submit කරන්න ඕනේ. link එක open උනේ නැත්නම් backup link එක WhatsApp එකෙන් දාන්න, නැත්නම් මම 8:45PM පස්සේ ආයෙත් check කරන්නම්.",
+    "inputTypesCovered": "Question forms; Requests; Platform/App Names in Singlish; English Digital Terms in Singlish; Inputs with Time Formats; Place Names Embedded in Singlish; Inputs with Dates; Multi-Word English Phrases in Singlish; Inputs with Slang and Casual Phrasing",
+    "evidence": "Evidence: The input includes a question/request, Google Meet, link/email, 9:30AM, Kandy, March 25, 'please inform teacher', and 'machan'."
+  },
+  {
+    "tcId": "Neg_0050",
+    "inputLengthType": "M",
+    "input": "ado Nimal ayya, mata LKR 2500k transfer karala receipt eka WhatsApp eken danna. mage email akila99@test.com walata copy ekak ewanna, nathnam mama 6:15PM passe check karannam 😅 receipt eka blur nam clear photo ekak danna, file size eka 2MB walata adu karala PDF widihata save karanna.",
+    "expectedOutput": "අඩෝ Nimal අයියා, මට LKR 2500ක් transfer කරලා receipt එක WhatsApp එකෙන් දාන්න. මගේ email akila99@test.com වලට copy එකක් එවන්න, නැත්නම් මම 6:15PM පස්සේ check කරන්නම් 😅 receipt එක blur නම් clear photo එකක් දාන්න, file size එක 2MB වලට අඩු කරලා PDF විදිහට save කරන්න.",
+    "inputTypesCovered": "Command forms; Person Names Embedded in Singlish; Inputs with Currency; Platform/App Names in Singlish; Online Indentifiers in Singlish; Inputs with Time Formats; Inputs Containing Emojis; Inputs with Slang and Casual Phrasing",
+    "evidence": "Evidence: The input includes a command, person name Nimal, LKR 2500k, WhatsApp, email address, 6:15PM, emoji, and slang 'ado'."
+  }
+]
